@@ -73,6 +73,9 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestBaseExpress.cs" />
+    <Compile Include="TestObjectExpress.cs" />
+    <Compile Include="TestCustomExpress.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Laura.Compute\Laura.Compute.csproj">

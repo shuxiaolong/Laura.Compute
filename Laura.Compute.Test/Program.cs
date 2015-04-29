@@ -8,35 +8,22 @@ namespace Laura.Compute.Test
 {
     public class Program
     {
+        private const string SplitLine = "--------------------------------------------------";
+        const string LogoExpress = "REPLACE('Laura.Compute - Love Java.', 'Love Java.', 'Love C#.')";
+
         public static void Main()
         {
-            //预执行 //
-            ExpressSchema expressSchema = ExpressSchema.Create("\"AABBCC\" LIKE \"%BB%\" AND 300>100 AND -0.000021323E+12 OR 34.543 AND True OR false AND 5697.000021323E+12 OR -45678.424123 AND [FName] IN (\"ShuXiaolong\",\"JiangXiaoya\")");
-            Console.WriteLine(expressSchema);
+            do
+            {
+                string input = ShowDesktop();
+                if (input == "1") TestBaseExpress.StartTest();
+                else if (input == "2") TestObjectExpress.StartTest();
+                else if (input == "3") TestCustomExpress.StartTest();
+                else if (input == "4") break;
+                else Console.Clear();
+            } while (true); 
 
-            ExpressSchema inExpress = ExpressSchema.Create("23 IN (12,23,34)");
-            object inValue = inExpress.Compute(null);
-            Console.WriteLine(inValue);
 
-            ExpressSchema maxExpress = ExpressSchema.Create("2 + Max (12,23,34)");  //,Max(2,4,100)
-            object maxValue = maxExpress.Compute(null);
-            Console.WriteLine(maxValue);
-
-            ExpressSchema maxStringExpress = ExpressSchema.Create("Max (\"AAA\",\"BBB\",\"CCC\")");
-            object maxStringValue = maxStringExpress.Compute(null);
-            Console.WriteLine(maxStringValue);
-
-            ExpressSchema minStringExpress = ExpressSchema.Create("Min (\"AAA\",\"BBB\",\"CCC\")");
-            object minStringValue = minStringExpress.Compute(null);
-            Console.WriteLine(minStringValue);
-
-            ExpressSchema maxDateExpress = ExpressSchema.Create("Max (\"1989-11-27\",\"1990-04-11\",\"2013-11-28\")");
-            object maxDateValue = maxDateExpress.Compute(null);
-            Console.WriteLine(maxDateValue);
-
-            ExpressSchema minDateExpress = ExpressSchema.Create("Min (\"1989-11-27\",\"1990-04-11\",\"2013-11-28\")");
-            object minDateValue = minDateExpress.Compute(null);
-            Console.WriteLine(minDateValue);
 
 
             //分析一个 表达式，得到 表达式结构 对象
@@ -62,6 +49,26 @@ namespace Laura.Compute.Test
 
             Console.WriteLine("\r\n\r\n执行已经结束！");
             Console.ReadKey();
+        }
+
+        public static string ShowDesktop()
+        {
+            ExpressSchema logoExpressSchema = ExpressSchema.Create(LogoExpress);
+            object logoExpressValue = logoExpressSchema.Compute(null);
+            Console.WriteLine("Logo Express: \t{0}\r\nExpress Value: \t{1}", LogoExpress, logoExpressValue);
+
+            Console.WriteLine(SplitLine);
+
+            Console.WriteLine("  1: Test BaseExpress.   (测试 简单 表达式)");
+            Console.WriteLine("  2: Test ObjectExpress. (测试 对象 表达式)");
+            Console.WriteLine("  3: Test CustomExpress. (测试 自定义 表达式)");
+            Console.WriteLine("  4: Exit.               (退出)");
+
+            Console.WriteLine(SplitLine);
+            Console.Write("Input Choice:");
+
+            string input = Console.ReadLine();
+            return input;
         }
 
         public static void TestNormalExpress01()
