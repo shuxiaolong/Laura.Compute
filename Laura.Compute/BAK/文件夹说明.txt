@@ -1,0 +1,11 @@
+﻿Laura.Compute 字符串算法第二版 是从  Beetle.BaseUtil.Compute 字符串算法第一版 进化而来。
+
+Laura.Compute\BAK\ 文件夹 即为 升级过程中，被删除的 不再被使用的 类文件；
+这些类文件 已经不会被 进行编译；
+
+除了 在 Laura.Compute 遇到BUG时 这些 第一版 的代码 可以提供参考 外，\BAK\ 文件夹下的类文件 已经没有任何价值；
+
+知悉；
+
+
+
