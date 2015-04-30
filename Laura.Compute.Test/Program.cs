@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 
 namespace Laura.Compute.Test
 {
-    public class Program
+    public class Program 
     {
         private const string SplitLine = "--------------------------------------------------";
         const string LogoExpress = "REPLACE('Laura.Compute - Love Java.', 'Love Java.', 'Love C#.')";
